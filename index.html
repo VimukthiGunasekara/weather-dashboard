@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Dashboard</title>
+
+    <link rel="stylesheet" type="text/css" href="./assest/css/style.css">
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+</head>
+
+<body>
+    <div class="background">
+        <!-- Navigation -->
+        <div class="nav-bar align-center">
+            <div>
+                <h3 class="text-center">Weather Dashboard</h3>
+            </div>
+        </div>
+
+        <br>
+
+        <!-- Current Weather Forecast -->
+        <div class="row">
+            <div class="medium-7 large-7 columns">
+                <div class="grid-x grid-margin-x">
+                    <h1 class="cityName"></h1>
+                    <h4 class="cDate"></h4>
+                    <p class="cMinMax"></p>
+                    <img class="imgIcon">
+                    <p class="celsius"></p>
+                    <p class="cFeel"></p>
+                    <p class="wind"></p>
+                    <p class="humidity"></p>
+                </div>
+            </div>
+
+            <div class="medium-5 large-5 columns weather-infomation">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <p>weather infomation</p>
+                        <input id="sCity" type="text" placeholder="Search City" value="hamilton">
+                        <button type="submit" onclick="getWeather()" class="button">Search Now !</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 5Days Weather Forecast -->
+        <div id="content-right" class="col-md-12 pt-4">
+            <div class="row">
+                <div class="grid-x">
+                    <div id="five-day-forecast">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- js file -->
+    <script src="./assest/js/app.js"></script>
+    <!-- moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+</body>
+
+</html>

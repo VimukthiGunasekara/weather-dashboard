@@ -1,0 +1,43 @@
+body{    
+    background-size: initial;
+    background-repeat: no-repeat;
+    background: url("https://images.unsplash.com/photo-1625595270389-2d0b8bc9997f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8dG9yb250b3x8fHx8fDE2NzI2Njg1NjA&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1600");
+}
+
+.background {
+    background: #000000d0;
+    background-size:contain;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+#header {
+    background-color: transparent;
+}
+
+.nav-bar {
+    padding: 10px;
+}
+
+.header {
+    padding: 50px 0px;
+}
+
+.celsius {
+    font-size: 96px;
+    margin-top: -40px;
+    margin-bottom: -30px;
+}
+
+.weather-infomation {
+    background-color: #282f3d;
+    border-radius: 8px;
+    padding: 25px;
+}
+
+.fiveday-card {
+    background-color: #282f3d;
+    border-radius: 8px;
+    margin: 5px;
+    padding: 15px;
+}
