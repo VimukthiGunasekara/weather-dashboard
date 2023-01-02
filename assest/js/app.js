@@ -29,6 +29,7 @@ var getCurrentWeather = () => {
             var currIcon = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
             imgIcon.src = currIcon;
             cDate.textContent = (moment.unix(data.dt).utc().utcOffset(data.timezone / 60 / 60)).format("DD MMM YYYY");
+            document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + city.value + "')";
         });
 }
 
