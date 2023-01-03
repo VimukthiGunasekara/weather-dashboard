@@ -38,12 +38,16 @@
             </div>
 
             <div class="medium-5 large-5 columns weather-infomation">
-                <div class="row">
-                    <div class="small-12 columns">
-                        <p>weather infomation</p>
-                        <input id="sCity" type="text" placeholder="Search City" value="hamilton">
-                        <button type="submit" onclick="getWForeCasting()" class="button">Search Now !</button>
-                    </div>
+                <div class="small-12 columns">
+                    <p>weather infomation</p>
+                    <input id="sCity" type="text" placeholder="Search City" value="hamilton">
+                    <button type="button" id="submitBtn" class="button">Search Now !</button>
+                </div>
+
+                <div class="small-12 columns">
+                    </hr>
+                    <ul id="city-results" class="list-group"></ul>
+                    <a id="clear-results" href="#"></a>
                 </div>
             </div>
 

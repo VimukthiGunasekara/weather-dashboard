@@ -20,6 +20,9 @@ var getCurrentWeather = () => {
             return respose.json();
         })
         .then(function (data) {
+
+            localStorage.setItem(localStorage.length, city.value);
+
             cName.textContent = data.name;
             celsius.textContent = ((data.main.temp) * 9 / 5 - 459).toFixed(1) + 'F';
             cMinMax.textContent = "Min : " + ((data.main.temp_min) * 9 / 5 - 459).toFixed(1) + 'F' + ' | Max : ' + ((data.main.temp_max) * 9 / 5 - 459).toFixed(1) + 'F';
@@ -34,7 +37,6 @@ var getCurrentWeather = () => {
 }
 
 var getFiveDaysForeCasting = () => {
-
     var fiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + city.value + "&units=imperial&APPID=" + apiKey;
 
     fetch(fiveDay)
@@ -43,6 +45,7 @@ var getFiveDaysForeCasting = () => {
         })
         .then(function (data) {
 
+            //add to html
             let fiveDayForecastHTML = `<div">
 
             <hr><h4 class="text-center">05 more days weather situations</h4>`;
@@ -56,6 +59,8 @@ var getFiveDaysForeCasting = () => {
                 let iconURL = "https://openweathermap.org/img/w/" + dateofday.weather[0].icon + ".png";
 
                 if (thisMoment.format("HH:mm:ss") === "11:00:00" || thisMoment.format("HH:mm:ss") === "12:00:00" || thisMoment.format("HH:mm:ss") === "13:00:00") {
+
+                    console.log(dateofday.main.temp);
 
                     fiveDayForecastHTML += `<div class="medium-3 columns">
                     <div class="card fiveday-card">
@@ -72,59 +77,28 @@ var getFiveDaysForeCasting = () => {
                 </div>`;
                 }
             }
+            //add to html
             fiveDayForecastHTML += `</div>`;
             $('#five-day-forecast').html(fiveDayForecastHTML);
         });
-};
+}
 
+var getCity = () => {
+    if (!city.value) {
+        alert("Please enter the name of the city!");
+        return;
+    }    
 
-var getFiveDaysForeCasting = () => {
+    let cityblock = `<li><button type="button"">${city.value}</button></li>`;
 
-    var fiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + city.value + "&units=imperial&APPID=" + apiKey;
-
-    fetch(fiveDay)
-        .then(function (data) {
-            return data.json();
-        })
-        .then(function (data) {
-
-            let fiveDayForecastHTML = `<div">
-
-            <hr><h4 class="text-center">05 more days weather situations</h4>`;
-
-            for (let i = 0; i < data.list.length; i++) {
-                let dateofday = data.list[i];
-                let dayTime = dateofday.dt;
-                let timeZone = data.city.timezone;
-                let timeZoneHours = timeZone / 60 / 60;
-                let thisMoment = moment.unix(dayTime).utc().utcOffset(timeZoneHours);
-                let iconURL = "https://openweathermap.org/img/w/" + dateofday.weather[0].icon + ".png";
-
-                if (thisMoment.format("HH:mm:ss") === "11:00:00" || thisMoment.format("HH:mm:ss") === "12:00:00" || thisMoment.format("HH:mm:ss") === "13:00:00") {
-
-                    fiveDayForecastHTML += `<div class="medium-3 columns">
-                    <div class="card fiveday-card">
-                        <div class="card-divider">
-                            <h5>${thisMoment.format("DD MMM YYYY")}</h5>
-                        </div>
-                        <img src="${iconURL}">
-                        <div class="card-section">
-                            <h4>Temp: ${dateofday.main.temp}&#8457;</h4>
-                            <p>Feel like: ${dateofday.main.feels_like}%</p>
-                            <p>Humidity: ${dateofday.main.humidity}%</p>
-                        </div>
-                    </div>
-                </div>`;
-                }
-            }
-            fiveDayForecastHTML += `</div>`;
-            $('#five-day-forecast').html(fiveDayForecastHTML);
-        });
-};
+    //add to html
+    $('#city-results').prepend(cityblock);
+}
 
 function getWForeCasting() {
     getCurrentWeather();
     getFiveDaysForeCasting();
+    getCity();
 }
 
 getWForeCasting();
