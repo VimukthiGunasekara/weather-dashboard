@@ -10,6 +10,7 @@ var mainBackground = document.querySelector('#main-background');
 
 var city = document.querySelector('#sCity');
 var submitBtn = document.querySelector('#submitBtn');
+var currcity = "";
 
 var apiKey = "0060eaa04b33f5f3c1022821bc49909c";
 
@@ -100,6 +101,13 @@ function getWForeCasting() {
     getFiveDaysForeCasting();
     getCity();
 }
+
+$('#city-results').on("click", (event) => {
+    event.preventDefault();
+    $('#sCity').val(event.target.textContent);
+    currcity=$('#sCity').val();
+    currentStatus(event);
+});
 
 getWForeCasting();
 submitBtn.addEventListener("click", getWForeCasting);
